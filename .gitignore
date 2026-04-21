@@ -1,0 +1,14 @@
+.DS_Store
+Thumbs.db
+
+# Backend
+backend/target/
+backend/.env
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+
+# Scripts temp
+scripts/.tmp/

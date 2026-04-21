@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --app-bg: #f4efe6;
+    --app-surface: rgba(255, 255, 255, 0.84);
+    --app-line: rgba(15, 23, 42, 0.08);
+    --app-ink: #172033;
+    --app-muted: #5f6b7a;
+    --app-blue: #165dff;
+    --app-gold: #d89b2b;
+    --app-violet: #7c3aed;
+    --app-shadow: 0 22px 60px rgba(17, 24, 39, 0.08);
+    font-family: "Space Grotesk", "Aptos", "Trebuchet MS", "Segoe UI", sans-serif;
+    color: var(--app-ink);
+    background:
+      radial-gradient(circle at top left, rgba(22, 93, 255, 0.12), transparent 34%),
+      radial-gradient(circle at top right, rgba(216, 155, 43, 0.14), transparent 30%),
+      linear-gradient(180deg, #faf7f1 0%, #f3eee6 100%);
+  }
+
+  * {
+    @apply border-slate-200;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    min-height: 100vh;
+    margin: 0;
+    font-family: "Space Grotesk", "Aptos", "Trebuchet MS", "Segoe UI", sans-serif;
+    color: var(--app-ink);
+    background:
+      radial-gradient(circle at top left, rgba(22, 93, 255, 0.12), transparent 34%),
+      radial-gradient(circle at top right, rgba(216, 155, 43, 0.14), transparent 30%),
+      linear-gradient(180deg, #faf7f1 0%, #f3eee6 100%);
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+    background-size: 36px 36px;
+    mask-image: radial-gradient(circle at center, black 35%, transparent 82%);
+    opacity: 0.2;
+  }
+
+  #root {
+    min-height: 100vh;
+  }
+
+  ::selection {
+    background: rgba(22, 93, 255, 0.18);
+    color: #09111f;
+  }
+}
