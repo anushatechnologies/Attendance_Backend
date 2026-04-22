@@ -1,5 +1,6 @@
 package com.attendance.security;
 
+import jakarta.servlet.RequestDispatcher;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -58,9 +59,14 @@ public class SecurityConfig {
             ex.authenticationEntryPoint(
                     (req, res, e) -> {
                       String auth = req.getHeader("Authorization");
+                      String path = req.getRequestURI();
+                      Object original = req.getAttribute(RequestDispatcher.ERROR_REQUEST_URI);
+                      if (original instanceof String s && !s.isBlank()) {
+                        path = s + " (dispatched to " + path + ")";
+                      }
                       log.warn(
                           "401 Unauthorized: path={} method={} hasAuthHeader={}",
-                          req.getRequestURI(),
+                          path,
                           req.getMethod(),
                           auth != null && !auth.isBlank());
                       res.sendError(HttpStatus.UNAUTHORIZED.value(), "Unauthorized");
