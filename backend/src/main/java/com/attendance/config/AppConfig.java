@@ -9,6 +9,7 @@ public class AppConfig {
   private Jwt jwt = new Jwt();
   private Attendance attendance = new Attendance();
   private Cloudinary cloudinary = new Cloudinary();
+  private Mail mail = new Mail();
 
   public Jwt getJwt() {
     return jwt;
@@ -32,6 +33,14 @@ public class AppConfig {
 
   public void setCloudinary(Cloudinary cloudinary) {
     this.cloudinary = cloudinary;
+  }
+
+  public Mail getMail() {
+    return mail;
+  }
+
+  public void setMail(Mail mail) {
+    this.mail = mail;
   }
 
   public static class Jwt {
@@ -112,6 +121,36 @@ public class AppConfig {
 
     public void setApiSecret(String apiSecret) {
       this.apiSecret = apiSecret;
+    }
+  }
+
+  public static class Mail {
+    private boolean enabled;
+    private String from;
+    private String hrRecipients;
+
+    public boolean isEnabled() {
+      return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+      this.enabled = enabled;
+    }
+
+    public String getFrom() {
+      return from;
+    }
+
+    public void setFrom(String from) {
+      this.from = from;
+    }
+
+    public String getHrRecipients() {
+      return hrRecipients;
+    }
+
+    public void setHrRecipients(String hrRecipients) {
+      this.hrRecipients = hrRecipients;
     }
   }
 }

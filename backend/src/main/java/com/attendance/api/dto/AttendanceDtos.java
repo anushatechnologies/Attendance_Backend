@@ -62,6 +62,12 @@ public class AttendanceDtos {
     private LocalTime outTime;
     private Integer workedMinutes;
     private String leaveReason;
+    private Double checkInLatitude;
+    private Double checkInLongitude;
+    private String checkInPhotoUrl;
+    private Double checkOutLatitude;
+    private Double checkOutLongitude;
+    private String checkOutPhotoUrl;
     private AttendanceStatus status;
 
     public AttendanceResponse(
@@ -72,6 +78,12 @@ public class AttendanceDtos {
         LocalTime outTime,
         Integer workedMinutes,
         String leaveReason,
+        Double checkInLatitude,
+        Double checkInLongitude,
+        String checkInPhotoUrl,
+        Double checkOutLatitude,
+        Double checkOutLongitude,
+        String checkOutPhotoUrl,
         AttendanceStatus status) {
       this.id = id;
       this.employeeId = employeeId;
@@ -80,6 +92,12 @@ public class AttendanceDtos {
       this.outTime = outTime;
       this.workedMinutes = workedMinutes;
       this.leaveReason = leaveReason;
+      this.checkInLatitude = checkInLatitude;
+      this.checkInLongitude = checkInLongitude;
+      this.checkInPhotoUrl = checkInPhotoUrl;
+      this.checkOutLatitude = checkOutLatitude;
+      this.checkOutLongitude = checkOutLongitude;
+      this.checkOutPhotoUrl = checkOutPhotoUrl;
       this.status = status;
     }
 
@@ -109,6 +127,30 @@ public class AttendanceDtos {
 
     public String getLeaveReason() {
       return leaveReason;
+    }
+
+    public Double getCheckInLatitude() {
+      return checkInLatitude;
+    }
+
+    public Double getCheckInLongitude() {
+      return checkInLongitude;
+    }
+
+    public String getCheckInPhotoUrl() {
+      return checkInPhotoUrl;
+    }
+
+    public Double getCheckOutLatitude() {
+      return checkOutLatitude;
+    }
+
+    public Double getCheckOutLongitude() {
+      return checkOutLongitude;
+    }
+
+    public String getCheckOutPhotoUrl() {
+      return checkOutPhotoUrl;
     }
 
     public AttendanceStatus getStatus() {

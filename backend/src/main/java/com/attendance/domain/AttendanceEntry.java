@@ -47,6 +47,24 @@ public class AttendanceEntry {
   @Column(name = "leave_reason", length = 255)
   private String leaveReason;
 
+  @Column(name = "check_in_latitude")
+  private Double checkInLatitude;
+
+  @Column(name = "check_in_longitude")
+  private Double checkInLongitude;
+
+  @Column(name = "check_in_photo_url", length = 500)
+  private String checkInPhotoUrl;
+
+  @Column(name = "check_out_latitude")
+  private Double checkOutLatitude;
+
+  @Column(name = "check_out_longitude")
+  private Double checkOutLongitude;
+
+  @Column(name = "check_out_photo_url", length = 500)
+  private String checkOutPhotoUrl;
+
   @Enumerated(EnumType.STRING)
   @Column(nullable = false, length = 10)
   private AttendanceStatus status;
@@ -105,6 +123,54 @@ public class AttendanceEntry {
 
   public void setLeaveReason(String leaveReason) {
     this.leaveReason = leaveReason;
+  }
+
+  public Double getCheckInLatitude() {
+    return checkInLatitude;
+  }
+
+  public void setCheckInLatitude(Double checkInLatitude) {
+    this.checkInLatitude = checkInLatitude;
+  }
+
+  public Double getCheckInLongitude() {
+    return checkInLongitude;
+  }
+
+  public void setCheckInLongitude(Double checkInLongitude) {
+    this.checkInLongitude = checkInLongitude;
+  }
+
+  public String getCheckInPhotoUrl() {
+    return checkInPhotoUrl;
+  }
+
+  public void setCheckInPhotoUrl(String checkInPhotoUrl) {
+    this.checkInPhotoUrl = checkInPhotoUrl;
+  }
+
+  public Double getCheckOutLatitude() {
+    return checkOutLatitude;
+  }
+
+  public void setCheckOutLatitude(Double checkOutLatitude) {
+    this.checkOutLatitude = checkOutLatitude;
+  }
+
+  public Double getCheckOutLongitude() {
+    return checkOutLongitude;
+  }
+
+  public void setCheckOutLongitude(Double checkOutLongitude) {
+    this.checkOutLongitude = checkOutLongitude;
+  }
+
+  public String getCheckOutPhotoUrl() {
+    return checkOutPhotoUrl;
+  }
+
+  public void setCheckOutPhotoUrl(String checkOutPhotoUrl) {
+    this.checkOutPhotoUrl = checkOutPhotoUrl;
   }
 
   public AttendanceStatus getStatus() {

@@ -91,15 +91,24 @@ public class AttendanceService {
     if (minutes != null) {
       if (minutes >= fullDayMinutes) status = AttendanceStatus.PRESENT;
       else if (minutes >= halfDayMinutes) status = AttendanceStatus.HALF_DAY;
+    } else if (inTime != null && outTime == null) {
+      // In-progress day: checked-in but not checked-out yet.
+      // Use PRESENT so the UI doesn't show it as Leave during the day.
+      status = AttendanceStatus.PRESENT;
     }
 
     entry.setStatus(status);
     if (status == AttendanceStatus.LEAVE) {
-      String normalizedReason = leaveReason == null ? "" : leaveReason.trim();
-      if (normalizedReason.isBlank()) {
-        throw new ApiException(HttpStatus.BAD_REQUEST, "Leave reason is required for leave day");
+      // Require a reason only when explicitly marking Leave (no in/out time).
+      if (inTime == null && outTime == null) {
+        String normalizedReason = leaveReason == null ? "" : leaveReason.trim();
+        if (normalizedReason.isBlank()) {
+          throw new ApiException(HttpStatus.BAD_REQUEST, "Leave reason is required for leave day");
+        }
+        entry.setLeaveReason(normalizedReason);
+      } else {
+        entry.setLeaveReason(null);
       }
-      entry.setLeaveReason(normalizedReason);
     } else {
       entry.setLeaveReason(null);
     }

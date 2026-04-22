@@ -78,6 +78,29 @@ public class CloudinaryService {
     }
   }
 
+  public UploadResult uploadAttendancePhoto(MultipartFile file, String publicId) {
+    if (file == null || file.isEmpty()) {
+      throw new ApiException(HttpStatus.BAD_REQUEST, "Photo file is required");
+    }
+    try {
+      Map<?, ?> res =
+          client()
+              .uploader()
+              .upload(
+                  file.getBytes(),
+                  ObjectUtils.asMap(
+                      "folder", "attendance/attendance-punches",
+                      "public_id", publicId,
+                      "overwrite", true,
+                      "resource_type", "image"));
+      String url = (String) res.get("secure_url");
+      String pid = (String) res.get("public_id");
+      return new UploadResult(url, pid);
+    } catch (IOException e) {
+      throw new ApiException(HttpStatus.INTERNAL_SERVER_ERROR, "Failed to upload image");
+    }
+  }
+
   private static boolean isBlank(String s) {
     return s == null || s.trim().isEmpty();
   }
